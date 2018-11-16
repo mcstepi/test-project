@@ -15,7 +15,9 @@ import org.openqa.selenium.support.FindBy;
 @PageUrl("http://85.93.17.135:9000")
 public class NewUserPage extends FluentPage{
 
-    @FindBy(className = "page-header")
+    private static final String FORM_ACTIONS = ".form-actions";
+
+    @FindBy(className = ".page-header")
     private FluentWebElement lblHeaderClass;
 
     @FindBy(id = "name")
@@ -39,26 +41,27 @@ public class NewUserPage extends FluentPage{
     @FindBy(id = "confirmationPassword")
     private FluentWebElement fieldPasswordRepeatId;
 
-    @FindBy(id = "user.confirmationPassword.error\"")
+    @FindBy(id = "user.confirmationPassword.error")
     private FluentWebElement errorPasswordRepeatId;
 
-    @FindBy(className = "form-actions")
+    @FindBy(className = ".form-actions")
     private FluentList<FluentWebElement> formActionClass;
 
-    @FindBy(className = "btn btn-primary")
+    @FindBy(className = ".btn btn-primary")
     private FluentList<FluentWebElement> buttons;
 
-    @FindBy(tagName = "button")
+    @FindBy(css = "#registrationForm button")
     private FluentWebElement submitButton;
 
 
     public NewUserPage typeAllFields(User user ) {
-        await().atMost(5, TimeUnit.SECONDS).until(lblHeaderClass).present();
+        //await().atMost(5, TimeUnit.SECONDS).until(el(FORM_ACTIONS)).present();
 
         fieldNameId.write(user.getLogin());
         fieldEmailId.write(user.getEmail());
         fieldPasswordId.write(user.getPassword());
         fieldPasswordRepeatId.write(user.getPassword());
+        System.out.println("user in form "+user.toString());
         return this;
     }
 
