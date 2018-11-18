@@ -1,18 +1,34 @@
 package com.marcin.stepien.testproject.model.ItemFabric;
 
 import com.marcin.stepien.testproject.model.Item.User;
-import com.marcin.stepien.testproject.utils.Randomizer;
+import com.marcin.stepien.testproject.utils.Randomized;
 
 public class UserFabric {
-
+    private static int standardLenght = 10;
     public static User getRandomUser(){
-        Randomizer randomizer = new Randomizer();
+        Randomized randomized = new Randomized();
         User user = new User();
 
-        user.setLogin(randomizer.getRandomString(5));
-        user.setEmail(randomizer.getRandomEmail(5));
-        user.setPassword(randomizer.getRandomString(8));
+        user.setName(randomized.getRandomString(standardLenght));
+        user.setEmail(randomized.getRandomEmail(standardLenght));
+        user.setPassword(randomized.getRandomString(standardLenght));
+        user.setPasswordConfirmation(user.getPassword());
+        return user;
+    }
+    public static User getRandomUserWitNameLength(int lenght){
+        Randomized randomized = new Randomized();
+        User user = getRandomUser();
+        user.setName(randomized.getRandomString(lenght));
 
         return user;
     }
+
+    public static User getRandomUserWitPasswdLength(int lenght){
+        Randomized randomized = new Randomized();
+        User user = getRandomUser();
+        user.setPassword(randomized.getRandomString(lenght));
+        user.setPasswordConfirmation(user.getPassword());
+        return user;
+    }
+
 }

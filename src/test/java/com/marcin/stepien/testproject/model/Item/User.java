@@ -1,16 +1,26 @@
 package com.marcin.stepien.testproject.model.Item;
 
 public class User {
-    private String login;
+    private int id;
+    private String name;
     private String email;
     private String password;
+    private String passwordConfirmation;
 
-    public String getLogin() {
-        return login;
+    public int getId() {
+        return id;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getEmail() {
@@ -29,9 +39,17 @@ public class User {
         this.password = password;
     }
 
+    public String getPasswordConfirmation() {
+        return passwordConfirmation;
+    }
+
+    public void setPasswordConfirmation(String passwordConfirmation) {
+        this.passwordConfirmation = passwordConfirmation;
+    }
+
     public String toString(){
-        return "name:"+getLogin()+"\n"
-                +"email:"+getEmail()+"\n"
-                +"pass:"+getPassword()+"\n";
+        return "name:"+ getName().trim()+"\n"
+                +"email:"+getEmail().trim()+"\n"
+                +"pass:"+getPassword().trim()+"\n";
     }
 }
