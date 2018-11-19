@@ -1,6 +1,6 @@
 package com.marcin.stepien.testproject.test;
 
-import com.marcin.stepien.testproject.controler.itemcontroler.UserControler;
+import com.marcin.stepien.testproject.helper.itemhelper.UserHelper;
 import com.marcin.stepien.testproject.model.Item.User;
 import com.marcin.stepien.testproject.model.ItemFabric.UserFabric;
 import com.marcin.stepien.testproject.model.webpage.AllUsersPage;
@@ -14,7 +14,6 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.List;
-import java.util.regex.Matcher;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertArrayEquals;
@@ -68,7 +67,7 @@ public class AddUserTest  extends FluentTest{
         addUser(user);
 
         List<User> allUsers = UserApiControler.getAllUsers();
-        Assert.assertThat(UserControler.isUserOnList(allUsers,user), is(true));
+        Assert.assertThat(UserHelper.isUserOnList(allUsers,user), is(true));
     }
 
     @Test
@@ -211,7 +210,6 @@ public class AddUserTest  extends FluentTest{
         User user = UserFabric.getRandomUserWitPasswdLength(5);
 
         NewUserPage page = addUser(user);
-       System.out.println(user);
 
         Assert.assertThat(page.getPasswordErrorText(), is(minSizeMessage));
 
@@ -266,7 +264,7 @@ public class AddUserTest  extends FluentTest{
         assertUserInAllUsers(user, true);
 
         List<User> usersList = allUsersPage.getAllUsers();
-        Assert.assertThat(UserControler.isUserOnList(usersList, user), is(true));
+        Assert.assertThat(UserHelper.isUserOnList(usersList, user), is(true));
     }
 
     @Test
@@ -326,7 +324,7 @@ public class AddUserTest  extends FluentTest{
 
     private List<User> assertUserInAllUsers(User user, boolean exists) {
         List<User> allUsers = UserApiControler.getAllUsers();
-        Assert.assertThat(UserControler.isUserOnList(allUsers,user), is(exists));
+        Assert.assertThat(UserHelper.isUserOnList(allUsers,user), is(exists));
         return allUsers;
     }
 

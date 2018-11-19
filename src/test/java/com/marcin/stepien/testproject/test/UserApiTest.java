@@ -1,13 +1,9 @@
 package com.marcin.stepien.testproject.test;
 
-import com.marcin.stepien.testproject.controler.itemcontroler.UserControler;
-import com.marcin.stepien.testproject.controler.webapicontrol.ApiControler;
+import com.marcin.stepien.testproject.helper.itemhelper.UserHelper;
 import com.marcin.stepien.testproject.controler.webapicontrol.UserApiControler;
 import com.marcin.stepien.testproject.model.Item.User;
 import com.marcin.stepien.testproject.model.ItemFabric.UserFabric;
-import com.marcin.stepien.testproject.model.webpage.NewUserPage;
-import org.fluentlenium.adapter.junit.FluentTest;
-import org.fluentlenium.core.annotation.Page;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -45,6 +41,6 @@ public class UserApiTest{
         List<User> allUsersAfter = UserApiControler.getAllUsers();
 
         Assert.assertThat(allUsersAfter.size(),is(allUsersBefore.size() + 1));
-        Assert.assertThat(true ,is(UserControler.isUserOnList(allUsersAfter,user)));
+        Assert.assertThat(true ,is(UserHelper.isUserOnList(allUsersAfter,user)));
     }
 }

@@ -25,7 +25,7 @@ public class AllUsersPage extends FluentPage {
     @FindBy(css = "#users tbody tr")
     private FluentList<FluentWebElement> dataUsers;
 
-    @FindBy(css = "a")
+    @FindBy(css = "a.btn")
     private FluentWebElement btnNewUser;
 
     @Page
