@@ -13,6 +13,8 @@
         <fluentlenium.version>3.7.0</fluentlenium.version>
         <!-- Make sure the selenium.version won't be overriden by another pom.xml -->
         <!--selenium.version>3.14.0</selenium.version-->
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>1.8</maven.compiler.source>
     </properties>
 
     <dependencies>
