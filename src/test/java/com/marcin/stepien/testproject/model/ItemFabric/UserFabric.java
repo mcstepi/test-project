@@ -9,16 +9,16 @@ public class UserFabric {
         Randomized randomized = new Randomized();
         User user = new User();
 
-        user.setName(randomized.getRandomString(standardLenght));
+        user.setName(randomized.getRandomFullString(standardLenght));
         user.setEmail(randomized.getRandomEmail(standardLenght));
-        user.setPassword(randomized.getRandomString(standardLenght));
+        user.setPassword(randomized.getRandomFullString(standardLenght));
         user.setPasswordConfirmation(user.getPassword());
         return user;
     }
     public static User getRandomUserWitNameLength(int lenght){
         Randomized randomized = new Randomized();
         User user = getRandomUser();
-        user.setName(randomized.getRandomString(lenght));
+        user.setName(randomized.getRandomFullString(lenght));
 
         return user;
     }
@@ -26,7 +26,7 @@ public class UserFabric {
     public static User getRandomUserWitPasswdLength(int lenght){
         Randomized randomized = new Randomized();
         User user = getRandomUser();
-        user.setPassword(randomized.getRandomString(lenght));
+        user.setPassword(randomized.getRandomFullString(lenght));
         user.setPasswordConfirmation(user.getPassword());
         return user;
     }

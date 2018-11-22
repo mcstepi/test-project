@@ -114,7 +114,7 @@ public class AddUserTest  extends FluentTest{
     public void testMaxLenghtEmail(){
         User user = UserFabric.getRandomUser();
         Randomized randomized = new Randomized();
-        user.setEmail(randomized.getRandomString(200)+"@"+randomized.getRandomString(51)+".pl");
+        user.setEmail(randomized.getRandomSmallString(200)+"@"+randomized.getRandomSmallString(51)+".pl");
 
         addUser(user);
 
@@ -125,7 +125,7 @@ public class AddUserTest  extends FluentTest{
     public void testMaxLenghtExceedEmail(){
         User user = UserFabric.getRandomUser();
         Randomized randomized = new Randomized();
-        user.setEmail(randomized.getRandomString(200)+"@"+randomized.getRandomString(52)+".pl");
+        user.setEmail(randomized.getRandomSmallString(200)+"@"+randomized.getRandomSmallString(52)+".pl");
 
         NewUserPage page = addUser(user);
 
@@ -158,7 +158,7 @@ public class AddUserTest  extends FluentTest{
     public void testBadEmail(){
         User user = UserFabric.getRandomUser();
         Randomized randomized = new Randomized();
-        user.setEmail(randomized.getRandomString(10));
+        user.setEmail(randomized.getRandomFullString(10));
 
         NewUserPage page = addUser(user);
 
@@ -183,7 +183,7 @@ public class AddUserTest  extends FluentTest{
     public void testIncorrectPasswordConfirmation(){
         User user = UserFabric.getRandomUser();
         Randomized randomized = new Randomized();
-        user.setPasswordConfirmation(randomized.getRandomString(10));
+        user.setPasswordConfirmation(randomized.getRandomSmallString(10));
 
         NewUserPage page = addUser(user);
 
@@ -324,7 +324,7 @@ public class AddUserTest  extends FluentTest{
 
     private List<User> assertUserInAllUsers(User user, boolean exists) {
         List<User> allUsers = UserApiControler.getAllUsers();
-        Assert.assertThat(UserHelper.isUserOnList(allUsers,user), is(exists));
+        Assert.assertThat("user failed: "+user.toString(),UserHelper.isUserOnList(allUsers,user), is(exists));
         return allUsers;
     }
 
